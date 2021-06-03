@@ -12,7 +12,7 @@ terraform {
 
 locals {
   endpoint = format("%s/broker/%v/endpoint",local.issuer_endpoint, var.integration_name)
-  issuer_endpoint = format("https://%v:%v/auth/realms/%s", var.control_plane, var.control_plane_port, var.tenant_name)
+  issuer_endpoint = format("https://%v/auth/realms/%s", var.control_plane, var.tenant)
 }
 
 data "cyral_saml_certificate" "name" {

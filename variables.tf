@@ -1,17 +1,11 @@
-variable "tenant_name" {
+variable "tenant" {
   type = string
   description = "The tenant of your control plane. Ex.: mytenant"
 }
 
 variable "control_plane" {
   type = string
-  description = "Control plane address. Ex.: mytenant.cyral.com"
-}
-
-variable "control_plane_port" {
-  type = number
-  description = "The port on which the control plane will be listening. Ex.: 8000"
-  default = 8000
+  description = "Control plane address and port. Ex.: mytenant.cyral.com:8000"
 }
 
 variable "email_domains" {
