@@ -25,18 +25,6 @@ variable "assigned_groups" {
   default = []
 }
 
-variable "assigned_users" {
- type = list(object(
-   {
-     id = string
-     username = string
-     password = string
-   }
- )) 
- description = "People that will be assigned to the Cyral app on Okta."
- default = []
-}
-
 variable "okta_app_name" {
   type = string
   description = "The name of the app that will be created on okta."
