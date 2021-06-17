@@ -1,35 +1,35 @@
 locals {
-  endpoint = format("%s/broker/%v/endpoint",local.issuer_endpoint, var.integration_name)
+  endpoint = format("%s/broker/%v/endpoint", local.issuer_endpoint, var.integration_name)
   issuer_endpoint = format("https://%v/auth/realms/%s", var.control_plane, var.tenant)
 }
 
-data "cyral_saml_certificate" "name" {
+data "cyral_saml_certificate" "this" {
 }
 
-data "okta_app_metadata_saml" "name" {
-  app_id = okta_app_saml.okta_app.id
+data "okta_app_metadata_saml" "this" {
+  app_id = okta_app_saml.this.id
 }
 
-resource "cyral_integration_okta" "okta_integration" {
-  signin_url = okta_app_saml.okta_app.http_post_binding
-  signout_url = replace(okta_app_saml.okta_app.http_post_binding, "sso", "slo")
+resource "cyral_integration_okta" "this" {
+  signin_url = okta_app_saml.this.http_post_binding
+  signout_url = replace(okta_app_saml.this.http_post_binding, "sso", "slo")
 
   name = var.integration_name
 
-  certificate = okta_app_saml.okta_app.certificate
+  certificate = okta_app_saml.this.certificate
 
   email_domains = var.email_domains
 }
 
-data "okta_group" "groups" {
+data "okta_group" "this" {
   count = length(var.okta_groups)
   name = var.okta_groups[count.index]
 }
 
-resource "okta_app_saml" "okta_app" {
+resource "okta_app_saml" "this" {
   label = "Cyral"
 
-  groups = [for g in data.okta_group.groups : g.id]
+  groups = [for g in data.okta_group.this : g.id]
 
   sp_issuer = local.issuer_endpoint
   single_logout_issuer = local.issuer_endpoint
@@ -40,7 +40,7 @@ resource "okta_app_saml" "okta_app" {
   audience = local.endpoint
 
   single_logout_url = local.endpoint
-  single_logout_certificate = data.cyral_saml_certificate.name.certificate
+  single_logout_certificate = data.cyral_saml_certificate.this.certificate
 
   subject_name_id_template = "$${{user.userName}}"
   subject_name_id_format = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"

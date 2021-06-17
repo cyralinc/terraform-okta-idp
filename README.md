@@ -42,6 +42,10 @@ module "cyral-idp-okta" {
 | <a name="provider_cyral"></a> [cyral](#provider\_cyral) | >= 1.1.0 |
 | <a name="provider_okta"></a> [okta](#provider\_okta) | ~> 3.10 |
 
+## Modules
+
+No modules.
+
 ## Resources
 
 | Name | Type |
@@ -65,6 +69,4 @@ module "cyral-idp-okta" {
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_samlmeta"></a> [samlmeta](#output\_samlmeta) | n/a |
+No outputs.
