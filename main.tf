@@ -1,15 +1,3 @@
-terraform {
-  required_providers {
-    okta = {
-      source = "okta/okta"
-      version = "~> 3.10"
-    }
-    cyral = {
-      source = "cyral.com/terraform/cyral"
-    }
-  }
-}
-
 locals {
   endpoint = format("%s/broker/%v/endpoint",local.issuer_endpoint, var.integration_name)
   issuer_endpoint = format("https://%v/auth/realms/%s", var.control_plane, var.tenant)
@@ -22,10 +10,6 @@ data "okta_app_metadata_saml" "name" {
   app_id = okta_app_saml.okta_app.id
 }
 
-output "samlmeta" {
-  value = data.okta_app_metadata_saml.name
-}
-
 resource "cyral_integration_okta" "okta_integration" {
   signin_url = okta_app_saml.okta_app.http_post_binding
   signout_url = replace(okta_app_saml.okta_app.http_post_binding, "sso", "slo")
@@ -34,14 +18,18 @@ resource "cyral_integration_okta" "okta_integration" {
 
   certificate = okta_app_saml.okta_app.certificate
 
-  # set this to your users' email domains
   email_domains = var.email_domains
+}
+
+data "okta_group" "groups" {
+  count = length(var.okta_groups)
+  name = var.okta_groups[count.index]
 }
 
 resource "okta_app_saml" "okta_app" {
   label = "Cyral"
 
-  groups = var.assigned_groups
+  groups = [for g in data.okta_group.groups : g.id]
 
   sp_issuer = local.issuer_endpoint
   single_logout_issuer = local.issuer_endpoint
@@ -68,12 +56,14 @@ resource "okta_app_saml" "okta_app" {
     values = ["user.email"]
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
   }
+
   attribute_statements {
     name = "FIRST_NAME"
     type = "EXPRESSION"
     values = ["user.firstName"]
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
   }
+
   attribute_statements {
     name = "LAST_NAME"
     type = "EXPRESSION"
