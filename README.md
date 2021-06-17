@@ -46,12 +46,10 @@ module "cyral-idp-okta" {
 
 | Name | Type |
 |------|------|
-
 | cyral_integration_okta.okta_integration | resource |
-| [okta_app_saml.okta_app](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_saml) | resource |
-
 | cyral_saml_certificate.name | data source |
 | [okta_app_metadata_saml.name](https://registry.terraform.io/providers/okta/okta/latest/docs/data-sources/app_metadata_saml) | data source |
+| [okta_app_saml.okta_app](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_saml) | resource |
 | [okta_group.groups](https://registry.terraform.io/providers/okta/okta/latest/docs/data-sources/group) | data source |
 
 ## Inputs
