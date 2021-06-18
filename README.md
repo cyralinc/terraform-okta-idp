@@ -5,7 +5,25 @@ This module provides the complete configuration to integrate Okta as an Identity
 ## Usage
 
 ```terraform
+terraform {
+  required_providers {
+    okta = {
+      source = "okta/okta"
+      version = "~> 3.10"
+    }
+    cyral = {
+      source = "cyralinc/cyral"
+      version = ">= 1.2.0"
+    }
+  }
+}
+
 provider "cyral" {
+  # client_id and client_secret may also be declared as env vars.
+  # Please see provider docs for more info.
+  client_id = ""
+  client_secret = ""
+
   control_plane = "mytenant.cyral.com:8000"
 }
 

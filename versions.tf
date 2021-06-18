@@ -5,7 +5,7 @@ terraform {
       version = "~> 3.10"
     }
     cyral = {
-      source = "cyral.com/terraform/cyral"
+      source = "cyralinc/cyral"
       version = ">= 1.2.0"
     }
   }
