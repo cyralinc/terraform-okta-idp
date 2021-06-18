@@ -1,17 +1,11 @@
-variable "tenant_name" {
+variable "tenant" {
   type = string
-  description = "The tenant of your control plane. Ex.: mytenant"
+  description = "Tenant associated with the control plane"
 }
 
 variable "control_plane" {
   type = string
-  description = "Control plane address. Ex.: mytenant.cyral.com"
-}
-
-variable "control_plane_port" {
-  type = number
-  description = "The port on which the control plane will be listening. Ex.: 8000"
-  default = 8000
+  description = "Control plane host and API port (ex: some-cp.cyral.com:8000)"
 }
 
 variable "email_domains" {
@@ -22,28 +16,16 @@ variable "email_domains" {
 
 variable "integration_name" {
   type = string
-  description = "The name of the integration that will be created on cyral's control plane."
+  description = "Integration name that will be shown in Control Plane."
 }
 
-variable "assigned_groups" {
+variable "okta_groups" {
   type = list(string)
-  description = "Groups that the cyral app will be assigned to on okta. These can be obtained from the \"okta_group\" data source."
+  description = "Groups that the cyral app will be assigned to in Okta."
   default = []
-}
-
-variable "assigned_users" {
- type = list(object(
-   {
-     id = string
-     username = string
-     password = string
-   }
- )) 
- description = "People that will be assigned to the Cyral app on Okta."
- default = []
 }
 
 variable "okta_app_name" {
   type = string
-  description = "The name of the app that will be created on okta."
+  description = "The name of the app that will be created in Okta."
 }
