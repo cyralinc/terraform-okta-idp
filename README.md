@@ -34,7 +34,8 @@ provider "okta" {
 }
 
 module "cyral-idp-okta" {
-  source = "cyral/idp-okta"
+  source = "cyralinc/idp-okta/cyral"
+  version = "1.0.0"
 
   control_plane = "mytenant.cyral.com:8000"
   tenant = "mytenant"
