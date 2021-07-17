@@ -17,8 +17,6 @@ resource "cyral_integration_okta" "this" {
   name = var.integration_name
 
   certificate = okta_app_saml.this.certificate
-
-  email_domains = var.email_domains
 }
 
 data "okta_group" "this" {
