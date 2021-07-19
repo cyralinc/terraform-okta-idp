@@ -1,17 +1,12 @@
 variable "tenant" {
   type = string
   description = "Tenant associated with the control plane"
+  default = "default"
 }
 
 variable "control_plane" {
   type = string
   description = "Control plane host and API port (ex: some-cp.cyral.com:8000)"
-}
-
-variable "email_domains" {
-  type = list(string)
-  description = "Email domains that will be accepted as valid logins."
-  default = []
 }
 
 variable "integration_name" {
