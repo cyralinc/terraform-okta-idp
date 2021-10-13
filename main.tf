@@ -7,7 +7,7 @@ locals {
     "https://%s/auth/realms/%s/broker/%s/endpoint/clients/%s-client",
     var.control_plane, var.tenant, local.integration_alias, local.integration_alias
   )
-  audience_restriction         = format(
+  audience_restriction = format(
     "https://%s/auth/realms/%s",
     var.control_plane, var.tenant
   )
@@ -116,11 +116,8 @@ resource "cyral_integration_saml_okta" "this" {
       disable_post_binding_response = local.config.disable_post_binding_response
       disable_post_binding_authn_request = local.config.disable_post_binding_authn_request
       disable_post_binding_logout = local.config.disable_post_binding_logout
-      //disable_want_authn_requests_signed = local.config.disable_want_authn_requests_signed
-      //disable_want_assertions_signed = local.config.disable_want_assertions_signed
       want_assertions_encrypted = local.config.want_assertions_encrypted
       disable_force_authentication = local.config.disable_force_authentication
-      //disable_validate_signature = local.config.disable_validate_signature
       gui_order = local.config.gui_order == "" ? null : local.config.gui_order
       xml_sig_key_info_key_name_transformer = local.config.xml_sig_key_info_key_name_transformer == "" ? null : local.config.xml_sig_key_info_key_name_transformer
       signing_certificate = local.config.signing_certificate == "" ? null : local.config.signing_certificate
