@@ -1,11 +1,11 @@
 variable "control_plane" {
   type = string
-  description = "Control plane host and API port (ex: some-cp.cyral.com:8000)"
+  description = "Control plane host and API port (ex: some-cp.cyral.com:8000)."
 }
 
 variable "tenant" {
   type = string
-  description = "Tenant associated with the control plane"
+  description = "Tenant associated with the Control Plane."
   default = "default"
 }
 
