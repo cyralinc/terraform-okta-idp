@@ -67,12 +67,12 @@ resource "okta_app_saml" "this" {
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
   }
 
-  /* acs_endpoints = []
-  features = [] */
-
   lifecycle {
     ignore_changes = [
-      # This is needed just because Okta still updating `groups` field even though its 
+      # This is needed because Okta stores the certificate with line breaks, which causes
+      # a plan at every apply
+      single_logout_certificate,
+      # This is needed because Okta still updating `groups` field even though its 
       # deprecated.
       groups,
     ]
@@ -123,7 +123,7 @@ resource "cyral_integration_saml_okta" "this" {
       //disable_validate_signature = local.config.disable_validate_signature
       gui_order = local.config.gui_order == "" ? null : local.config.gui_order
       xml_sig_key_info_key_name_transformer = local.config.xml_sig_key_info_key_name_transformer == "" ? null : local.config.xml_sig_key_info_key_name_transformer
-      //signing_certificate = local.config.signing_certificate == "" ? null : local.config.signing_certificate
+      signing_certificate = local.config.signing_certificate == "" ? null : local.config.signing_certificate
       allowed_clock_skew = local.config.allowed_clock_skew
       saml_metadata_url = local.config.saml_metadata_url == "" ? null : local.config.saml_metadata_url
       base_64_saml_metadata_document = local.config.base_64_saml_metadata_document == "" ? null : local.config.base_64_saml_metadata_document
