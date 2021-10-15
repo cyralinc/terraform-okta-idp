@@ -2,6 +2,10 @@
 
 This module provides the complete configuration to integrate Okta as an Identity Provider to Cyral Control Plane. It applies an equivalent configuration as described in the [Cyral documentation for Okta SSO](https://cyral.com/docs/sso/sso-okta).
 
+## Note
+
+This module will only work for Control Planes with version >= 2.24.
+
 ## Usage
 
 ```terraform
