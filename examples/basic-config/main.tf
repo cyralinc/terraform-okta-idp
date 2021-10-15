@@ -41,3 +41,11 @@ module "cyral_idp_okta" {
 
   integration_name = "Okta SSO"
 }
+
+output "integration_saml_okta_id" {
+  value = module.cyral_idp_okta.integration_saml_okta_id
+}
+
+output "okta_app_saml_id" {
+  value = module.cyral_idp_okta.okta_app_saml_id
+}
