@@ -14,8 +14,8 @@ locals {
   config = data.cyral_saml_configuration.this
 }
 
-data "cyral_saml_certificate" "this" {
-}
+/* data "cyral_saml_certificate" "this" {
+} */
 
 resource "okta_app_saml" "this" {
   label = var.okta_app_name
@@ -34,9 +34,9 @@ resource "okta_app_saml" "this" {
   assertion_signed = true
 
   sp_issuer = local.audience_restriction
-  single_logout_issuer = local.audience_restriction
+  /* single_logout_issuer = local.audience_restriction
   single_logout_url = local.single_sign_on_url
-  single_logout_certificate = data.cyral_saml_certificate.this.certificate
+  single_logout_certificate = data.cyral_saml_certificate.this.certificate */
 
   attribute_statements {
     name = "EMAIL"
