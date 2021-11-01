@@ -1,6 +1,6 @@
-output "integration_saml_okta_id" {
-  description = "The ID (Alias) of the Okta SAML Integration resource."
-  value = cyral_integration_saml_okta.this.id
+output "integration_sso_okta_id" {
+  description = "The ID (Alias) of the Okta SSO Integration resource."
+  value = cyral_integration_sso_okta.this.id
 }
 
 output "okta_app_saml_id" {
