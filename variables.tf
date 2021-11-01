@@ -9,9 +9,33 @@ variable "control_plane" {
   description = "Control plane host and API port (ex: some-cp.cyral.com:8000)."
 }
 
-variable "integration_name" {
+variable "sso_integration_name" {
   type = string
-  description = "Integration name that will be shown in Control Plane."
+  description = "SSO integration name that will be shown in Control Plane."
+}
+
+variable "back_channel_logout" {
+  type = bool
+  description = "Indicates whether or not the Okta Identity Provider supports backchannel logout."
+  default = null
+}
+
+variable "wants_assertion_encrypted" {
+  type = bool
+  description = "Indicates whether the Cyral Service Provider expects an encrypted assertion."
+  default = null
+}
+
+variable "disable_force_authentication" {
+  type = bool
+  description = "Indicates whether the Okta Identity Provider must authenticate the presenter directly rather than rely on a previous security context."
+  default = null
+}
+
+variable "allowed_clock_skew" {
+  type = number
+  description = "Clock skew in seconds that is tolerated when validating Identity Provider tokens."
+  default = null
 }
 
 variable "okta_groups" {

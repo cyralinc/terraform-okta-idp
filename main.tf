@@ -101,7 +101,7 @@ data "cyral_saml_configuration" "this" {
 resource "cyral_integration_sso_okta" "this" {
   draft_alias = local.integration_alias
   samlp {
-    display_name = var.integration_name
+    display_name = var.sso_integration_name
     config {
       single_sign_on_service_url = local.config.single_sign_on_service_url
       single_logout_service_url = local.config.single_logout_service_url == "" ? null : local.config.single_logout_service_url
@@ -112,16 +112,16 @@ resource "cyral_integration_sso_okta" "this" {
       signature_type = local.config.signature_type == "" ? null : local.config.signature_type
       saml_xml_key_name_tranformer = local.config.saml_xml_key_name_tranformer == "" ? null : local.config.saml_xml_key_name_tranformer
       hide_on_login_page = local.config.hide_on_login_page
-      back_channel_supported = local.config.back_channel_supported
+      back_channel_supported = var.back_channel_logout == null ? local.config.back_channel_supported : var.back_channel_logout
       disable_post_binding_response = local.config.disable_post_binding_response
       disable_post_binding_authn_request = local.config.disable_post_binding_authn_request
       disable_post_binding_logout = local.config.disable_post_binding_logout
-      want_assertions_encrypted = local.config.want_assertions_encrypted
-      disable_force_authentication = local.config.disable_force_authentication
+      want_assertions_encrypted = var.wants_assertion_encrypted == null ? local.config.want_assertions_encrypted : var.wants_assertion_encrypted
+      disable_force_authentication = var.disable_force_authentication == null ? local.config.disable_force_authentication : var.disable_force_authentication
       gui_order = local.config.gui_order == "" ? null : local.config.gui_order
       xml_sig_key_info_key_name_transformer = local.config.xml_sig_key_info_key_name_transformer == "" ? null : local.config.xml_sig_key_info_key_name_transformer
       signing_certificate = local.config.signing_certificate == "" ? null : local.config.signing_certificate
-      allowed_clock_skew = local.config.allowed_clock_skew
+      allowed_clock_skew = var.allowed_clock_skew == null ? local.config.allowed_clock_skew : var.allowed_clock_skew
       saml_metadata_url = local.config.saml_metadata_url == "" ? null : local.config.saml_metadata_url
       base_64_saml_metadata_document = local.config.base_64_saml_metadata_document == "" ? null : local.config.base_64_saml_metadata_document
       ldap_group_attribute = local.config.ldap_group_attribute == "" ? null : local.config.ldap_group_attribute
