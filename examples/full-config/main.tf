@@ -18,8 +18,14 @@ module "cyral_sso_okta" {
   version = ">= 2.0.0"
 
   control_plane = "mytenant.cyral.com:8000"
+  tenant = "default"
   
   okta_app_name = "Cyral"
-  
+  okta_groups = ["Everyone"]
+
   sso_integration_name = "Okta SSO"
+  back_channel_logout = false
+  wants_assertion_encrypted = false
+  disable_force_authentication = true
+  allowed_clock_skew = 0
 }
