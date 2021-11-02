@@ -32,8 +32,8 @@ resource "okta_app_saml" "this" {
   authn_context_class_ref  = "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"
 
   assertion_signed = true
-
   sp_issuer = local.audience_restriction
+
   single_logout_issuer = local.audience_restriction
   single_logout_url = local.single_sign_on_url
   single_logout_certificate = data.cyral_saml_certificate.this.certificate
@@ -64,12 +64,13 @@ resource "okta_app_saml" "this" {
     type = "GROUP"
     filter_type = "REGEX"
     filter_value = ".*"
+    values = []
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
   }
 
   lifecycle {
     ignore_changes = [
-      # This is needed because Okta stores the certificate with line breaks, which causes
+      # This is needed because Okta stores the certificate with line breaks, which would cause
       # a plan at every apply
       single_logout_certificate,
       # This is needed because Okta still updating `groups` field even though its 
@@ -85,6 +86,7 @@ data "okta_group" "this" {
 }
 
 resource "okta_app_group_assignments" "this" {
+  count = length(var.okta_groups) > 0 ? 1 : 0
   app_id   = okta_app_saml.this.id
   dynamic "group" {
     for_each = toset([for g in data.okta_group.this : g.id])
