@@ -9,9 +9,9 @@ variable "control_plane" {
   description = "Control plane host and API port (ex: some-cp.cyral.com:8000)."
 }
 
-variable "sso_integration_name" {
+variable "idp_integration_name" {
   type = string
-  description = "SSO integration name that will be shown in Control Plane."
+  description = "IdP integration name that will be shown in Control Plane."
 }
 
 variable "back_channel_logout" {

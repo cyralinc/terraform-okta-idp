@@ -100,10 +100,10 @@ data "cyral_saml_configuration" "this" {
   base_64_saml_metadata_document = base64encode(okta_app_saml.this.metadata)
 }
 
-resource "cyral_integration_sso_okta" "this" {
+resource "cyral_integration_idp_okta" "this" {
   draft_alias = local.integration_alias
   samlp {
-    display_name = var.sso_integration_name
+    display_name = var.idp_integration_name
     config {
       single_sign_on_service_url = local.config.single_sign_on_service_url
       single_logout_service_url = local.config.single_logout_service_url == "" ? null : local.config.single_logout_service_url

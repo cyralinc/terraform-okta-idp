@@ -1,4 +1,4 @@
-# Okta SSO Integration Full Config
+# Okta Idp Integration Full Config
 
 This is an example of a full configuration of this module.
 

@@ -1,4 +1,4 @@
-# Okta SSO Integration Basic Config
+# Okta IdP Integration Basic Config
 
 This is an example of a basic configuration of this module.
 

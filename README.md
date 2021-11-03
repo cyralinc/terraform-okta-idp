@@ -1,6 +1,6 @@
-# Cyral Okta SSO Integration Module
+# Cyral IdP Integration Module for Okta
 
-This module provides a complete configuration to create an Okta SSO Integration on a Cyral Control Plane. It applies an equivalent configuration as described in the [Cyral documentation for Okta SSO](https://cyral.com/docs/sso/sso-okta).
+This module provides the complete configuration to integrate Okta as an Identity Provider to Cyral Control Plane. It applies an equivalent configuration as described in the [Cyral documentation for Okta SSO](https://cyral.com/docs/sso-okta).
 
 -> This module will only work for Control Planes with version >= `2.25`.
 
@@ -39,31 +39,29 @@ provider "okta" {
   api_token = ""
 }
 
-module "cyral_sso_okta" {
-  source = "cyralinc/sso-okta/cyral"
+module "cyral_idp_okta" {
+  source = "cyralinc/idp-okta/cyral"
   version = ">= 2.0.0"
 
   control_plane = "mytenant.cyral.com:8000"
-  tenant = "default"
   
   okta_app_name = "Cyral"
   okta_groups = ["Everyone"]
 
-  sso_integration_name = "Okta SSO"
+  idp_integration_name = "Okta SSO"
   back_channel_logout = false
-  wants_assertion_encrypted = false
   disable_force_authentication = true
   allowed_clock_skew = 0
 }
 
-output "integration_sso_okta_id" {
-  description = "The ID (Alias) of the Okta SSO Integration resource."
-  value = module.cyral_sso_okta.integration_sso_okta_id
+output "integration_idp_okta_id" {
+  description = "The ID (Alias) of the Okta IdP Integration resource."
+  value = module.cyral_idp_okta.integration_idp_okta_id
 }
 
 output "okta_app_saml_id" {
   description = "The ID of the Okta SAML Application resource."
-  value = module.cyral_sso_okta.okta_app_saml_id
+  value = module.cyral_idp_okta.okta_app_saml_id
 }
 ```
 
@@ -91,7 +89,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [cyral_integration_sso_okta.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_sso_okta) | resource |
+| [cyral_integration_idp_okta.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_idp_okta) | resource |
 | [okta_app_group_assignments.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_group_assignments) | resource |
 | [okta_app_saml.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_saml) | resource |
 | [random_uuid.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
@@ -109,7 +107,7 @@ No modules.
 | <a name="input_disable_force_authentication"></a> [disable\_force\_authentication](#input\_disable\_force\_authentication) | Indicates whether the Okta Identity Provider must authenticate the presenter directly rather than rely on a previous security context. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
 | <a name="input_okta_app_name"></a> [okta\_app\_name](#input\_okta\_app\_name) | The name of the Okta Application that will be created. | `string` | n/a | yes |
 | <a name="input_okta_groups"></a> [okta\_groups](#input\_okta\_groups) | Groups that will be assigned in the Okta Application. | `list(string)` | `[]` | no |
-| <a name="input_sso_integration_name"></a> [sso\_integration\_name](#input\_sso\_integration\_name) | SSO integration name that will be shown in Control Plane. | `string` | n/a | yes |
+| <a name="input_idp_integration_name"></a> [idp\_integration\_name](#input\_idp\_integration\_name) | IdP integration name that will be shown in Control Plane. | `string` | n/a | yes |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | Tenant associated with the Control Plane. | `string` | `"default"` | no |
 | <a name="input_wants_assertions_encrypted"></a> [wants\_assertions\_encrypted](#input\_wants\_assertions\_encrypted) | Indicates whether the Cyral Service Provider expects an encrypted assertion. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
 
@@ -117,5 +115,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_integration_sso_okta_id"></a> [integration\_sso\_okta\_id](#output\_integration\_sso\_okta\_id) | The ID (Alias) of the Okta SSO Integration resource. |
+| <a name="output_integration_idp_okta_id"></a> [integration\_idp\_okta\_id](#output\_integration\_idp\_okta\_id) | The ID (Alias) of the Okta IdP Integration resource. |
 | <a name="output_okta_app_saml_id"></a> [okta\_app\_saml\_id](#output\_okta\_app\_saml\_id) | The ID of the Okta SAML Application resource. |

@@ -13,8 +13,8 @@ provider "okta" {
   api_token = ""
 }
 
-module "cyral_sso_okta" {
-  source = "cyralinc/sso-okta/cyral"
+module "cyral_idp_okta" {
+  source = "cyralinc/idp-okta/cyral"
   version = ">= 2.0.0"
 
   control_plane = "mytenant.cyral.com:8000"
@@ -23,7 +23,7 @@ module "cyral_sso_okta" {
   okta_app_name = "Cyral"
   okta_groups = ["Everyone"]
 
-  sso_integration_name = "Okta SSO"
+  idp_integration_name = "Okta SSO"
   back_channel_logout = false
   wants_assertions_encrypted = false
   disable_force_authentication = true

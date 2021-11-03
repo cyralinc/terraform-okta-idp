@@ -13,13 +13,13 @@ provider "okta" {
   api_token = ""
 }
 
-module "cyral_sso_okta" {
-  source = "cyralinc/sso-okta/cyral"
+module "cyral_idp_okta" {
+  source = "cyralinc/idp-okta/cyral"
   version = ">= 2.0.0"
 
   control_plane = "mytenant.cyral.com:8000"
   
   okta_app_name = "Cyral"
   
-  sso_integration_name = "Okta SSO"
+  idp_integration_name = "Okta SSO"
 }
