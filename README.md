@@ -105,15 +105,15 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_allowed_clock_skew"></a> [allowed\_clock\_skew](#input\_allowed\_clock\_skew) | Clock skew in seconds that is tolerated when validating Identity Provider tokens. | `number` | `null` | no |
-| <a name="input_back_channel_logout"></a> [back\_channel\_logout](#input\_back\_channel\_logout) | Indicates whether or not the Okta Identity Provider supports backchannel logout. | `bool` | `null` | no |
+| <a name="input_allowed_clock_skew"></a> [allowed\_clock\_skew](#input\_allowed\_clock\_skew) | Clock skew in seconds that is tolerated when validating Identity Provider tokens. | `number` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
+| <a name="input_back_channel_logout"></a> [back\_channel\_logout](#input\_back\_channel\_logout) | Indicates whether or not the Okta Identity Provider supports backchannel logout. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
 | <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | Control plane host and API port (ex: some-cp.cyral.com:8000). | `string` | n/a | yes |
-| <a name="input_disable_force_authentication"></a> [disable\_force\_authentication](#input\_disable\_force\_authentication) | Indicates whether the Okta Identity Provider must authenticate the presenter directly rather than rely on a previous security context. | `bool` | `null` | no |
-| <a name="input_okta_app_name"></a> [okta\_app\_name](#input\_okta\_app\_name) | The name of the app that will be created in Okta. | `string` | n/a | yes |
-| <a name="input_okta_groups"></a> [okta\_groups](#input\_okta\_groups) | Groups that the cyral app will be assigned to in Okta. | `list(string)` | `[]` | no |
+| <a name="input_disable_force_authentication"></a> [disable\_force\_authentication](#input\_disable\_force\_authentication) | Indicates whether the Okta Identity Provider must authenticate the presenter directly rather than rely on a previous security context. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
+| <a name="input_okta_app_name"></a> [okta\_app\_name](#input\_okta\_app\_name) | The name of the Okta Application that will be created. | `string` | n/a | yes |
+| <a name="input_okta_groups"></a> [okta\_groups](#input\_okta\_groups) | Groups that will be assigned in the Okta Application. | `list(string)` | `[]` | no |
 | <a name="input_sso_integration_name"></a> [sso\_integration\_name](#input\_sso\_integration\_name) | SSO integration name that will be shown in Control Plane. | `string` | n/a | yes |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | Tenant associated with the Control Plane. | `string` | `"default"` | no |
-| <a name="input_wants_assertion_encrypted"></a> [wants\_assertion\_encrypted](#input\_wants\_assertion\_encrypted) | Indicates whether the Cyral Service Provider expects an encrypted assertion. | `bool` | `null` | no |
+| <a name="input_wants_assertions_encrypted"></a> [wants\_assertions\_encrypted](#input\_wants\_assertions\_encrypted) | Indicates whether the Cyral Service Provider expects an encrypted assertion. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
 
 ## Outputs
 

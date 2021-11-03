@@ -40,11 +40,11 @@ variable "allowed_clock_skew" {
 
 variable "okta_groups" {
   type = list(string)
-  description = "Groups that the cyral app will be assigned to in Okta."
+  description = "Groups that will be assigned in the Okta Application."
   default = []
 }
 
 variable "okta_app_name" {
   type = string
-  description = "The name of the app that will be created in Okta."
+  description = "The name of the Okta Application that will be created."
 }
