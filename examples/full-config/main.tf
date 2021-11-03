@@ -25,7 +25,7 @@ module "cyral_sso_okta" {
 
   sso_integration_name = "Okta SSO"
   back_channel_logout = false
-  wants_assertion_encrypted = false
+  wants_assertions_encrypted = false
   disable_force_authentication = true
   allowed_clock_skew = 0
 }

@@ -118,7 +118,7 @@ resource "cyral_integration_sso_okta" "this" {
       disable_post_binding_response = local.config.disable_post_binding_response
       disable_post_binding_authn_request = local.config.disable_post_binding_authn_request
       disable_post_binding_logout = local.config.disable_post_binding_logout
-      want_assertions_encrypted = var.wants_assertion_encrypted == null ? local.config.want_assertions_encrypted : var.wants_assertion_encrypted
+      want_assertions_encrypted = var.wants_assertions_encrypted == null ? local.config.want_assertions_encrypted : var.wants_assertions_encrypted
       disable_force_authentication = var.disable_force_authentication == null ? local.config.disable_force_authentication : var.disable_force_authentication
       gui_order = local.config.gui_order == "" ? null : local.config.gui_order
       xml_sig_key_info_key_name_transformer = local.config.xml_sig_key_info_key_name_transformer == "" ? null : local.config.xml_sig_key_info_key_name_transformer

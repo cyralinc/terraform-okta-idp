@@ -20,7 +20,7 @@ variable "back_channel_logout" {
   default = null
 }
 
-variable "wants_assertion_encrypted" {
+variable "wants_assertions_encrypted" {
   type = bool
   description = "Indicates whether the Cyral Service Provider expects an encrypted assertion."
   default = null
