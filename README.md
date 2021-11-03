@@ -2,9 +2,7 @@
 
 This module provides a complete configuration to create an Okta SSO Integration on a Cyral Control Plane. It applies an equivalent configuration as described in the [Cyral documentation for Okta SSO](https://cyral.com/docs/sso/sso-okta).
 
-## Note
-
-This module will only work for Control Planes with version >= 2.25.
+-> This module will only work for Control Planes with version >= `2.25`.
 
 ## Usage
 
