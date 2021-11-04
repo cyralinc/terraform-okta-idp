@@ -48,7 +48,7 @@ module "cyral_idp_okta" {
   okta_app_name = "Cyral"
   okta_groups = ["Everyone"]
   
-  idp_integration_name = "Okta SSO"
+  idp_integration_name = "Okta"
 }
 
 output "integration_idp_okta_id" {

@@ -21,5 +21,5 @@ module "cyral_idp_okta" {
   
   okta_app_name = "Cyral"
   
-  idp_integration_name = "Okta SSO"
+  idp_integration_name = "Okta"
 }

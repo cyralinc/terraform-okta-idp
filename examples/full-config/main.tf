@@ -23,7 +23,7 @@ module "cyral_idp_okta" {
   okta_app_name = "Cyral"
   okta_groups = ["Everyone"]
 
-  idp_integration_name = "Okta SSO"
+  idp_integration_name = "Okta"
   back_channel_logout = false
   wants_assertions_encrypted = false
   disable_force_authentication = true
