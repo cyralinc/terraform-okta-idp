@@ -22,6 +22,10 @@ module "cyral_idp_okta" {
   
   okta_app_name = "Cyral"
   okta_groups = ["Everyone"]
+  okta_groups_filter = {
+    type = "REGEX"
+    value = "(Dev)|(Admin)"
+  }
 
   idp_integration_name = "Okta"
   back_channel_logout = false

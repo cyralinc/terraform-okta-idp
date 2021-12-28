@@ -105,6 +105,7 @@ No modules.
 | <a name="input_idp_integration_name"></a> [idp\_integration\_name](#input\_idp\_integration\_name) | IdP integration name that will be shown in Control Plane. | `string` | n/a | yes |
 | <a name="input_okta_app_name"></a> [okta\_app\_name](#input\_okta\_app\_name) | The name of the Okta Application that will be created. | `string` | n/a | yes |
 | <a name="input_okta_groups"></a> [okta\_groups](#input\_okta\_groups) | Groups that will be assigned in the Okta Application. | `list(string)` | `[]` | no |
+| <a name="input_okta_groups_filter"></a> [okta\_groups\_filter](#input\_okta\_groups\_filter) | The type and value of the filter that will be applied to Okta groups. | <pre>object({<br>    type = string<br>    value = string<br>  })</pre> | <pre>{<br>  "type": "REGEX",<br>  "value": ".*"<br>}</pre> | no |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | Tenant associated with the Control Plane. | `string` | `"default"` | no |
 | <a name="input_wants_assertions_encrypted"></a> [wants\_assertions\_encrypted](#input\_wants\_assertions\_encrypted) | Indicates whether the Cyral Service Provider expects an encrypted assertion. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
 
