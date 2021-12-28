@@ -62,8 +62,8 @@ resource "okta_app_saml" "this" {
   attribute_statements {
     name = "groups"
     type = "GROUP"
-    filter_type = "REGEX"
-    filter_value = ".*"
+    filter_type = var.okta_groups_filter.type
+    filter_value = var.okta_groups_filter.value
     values = []
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
   }

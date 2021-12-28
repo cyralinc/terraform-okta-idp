@@ -48,3 +48,15 @@ variable "okta_app_name" {
   type = string
   description = "The name of the Okta Application that will be created."
 }
+
+variable "okta_groups_filter" {
+  type = object({
+    type = string
+    value = string
+  })
+  description = "The type and value of the filter that will be applied to Okta groups."
+  default = {
+    type = "REGEX"
+    value = ".*"
+  }
+}
