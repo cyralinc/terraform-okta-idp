@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.1.1 - (March 30, 2022)
+
+Minimum required Control Plane version: `v2.25.0`.
+
+### Bugfix:
+
+* Fix extra bracket around userName for subject_name_id_template ([#11](https://github.com/cyralinc/terraform-cyral-idp-okta/pull/11))
+
 ## 2.1.0 - (December 29, 2021)
 
 Minimum required Control Plane version: `v2.25.0`.
