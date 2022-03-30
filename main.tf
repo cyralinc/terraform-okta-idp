@@ -23,7 +23,7 @@ resource "okta_app_saml" "this" {
   recipient = local.single_sign_on_url
   destination = local.single_sign_on_url
   audience = local.audience_restriction
-  subject_name_id_template = "$${{user.userName}}"
+  subject_name_id_template = "$${user.userName}"
   subject_name_id_format = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   response_signed = true
   signature_algorithm = "RSA_SHA256"
