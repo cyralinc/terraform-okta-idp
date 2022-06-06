@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.0 - (June 6, 2022)
+
+Minimum required Control Plane version: `v2.25.0`.
+
+### Feature:
+
+* Rename repository to `terraform-okta-idp` ([#12](https://github.com/cyralinc/terraform-cyral-idp-okta/pull/12))
+
 ## 2.1.1 - (March 30, 2022)
 
 Minimum required Control Plane version: `v2.25.0`.
