@@ -2,14 +2,14 @@ resource "random_uuid" "this" {
 }
 
 locals {
-  integration_alias = format("okta.%s", random_uuid.this.result)
-  single_sign_on_url = format(
-    "https://%s/auth/realms/%s/broker/%s/endpoint/clients/%s-client",
-    var.control_plane, var.tenant, local.integration_alias, local.integration_alias
-  )
-  audience_restriction = format(
+  sp_issuer_endpoint = format(
     "https://%s/auth/realms/%s",
     var.control_plane, var.tenant
+  )
+  idp_integration_alias = format("okta.%s", random_uuid.this.result)
+  idp_redirect_endpoint = format(
+    "%s/broker/%s/endpoint",
+    local.sp_issuer_endpoint, local.idp_integration_alias
   )
   config = data.cyral_saml_configuration.this
 }
@@ -19,10 +19,12 @@ data "cyral_saml_certificate" "this" {
 
 resource "okta_app_saml" "this" {
   label = var.okta_app_name
-  sso_url = local.single_sign_on_url
-  recipient = local.single_sign_on_url
-  destination = local.single_sign_on_url
-  audience = local.audience_restriction
+
+  sso_url = local.idp_redirect_endpoint
+  recipient = local.idp_redirect_endpoint
+  destination = local.idp_redirect_endpoint
+  audience = local.idp_redirect_endpoint
+
   subject_name_id_template = "$${user.userName}"
   subject_name_id_format = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   response_signed = true
@@ -32,10 +34,10 @@ resource "okta_app_saml" "this" {
   authn_context_class_ref  = "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"
 
   assertion_signed = true
-  sp_issuer = local.audience_restriction
+  sp_issuer = local.sp_issuer_endpoint
 
-  single_logout_issuer = local.audience_restriction
-  single_logout_url = local.single_sign_on_url
+  single_logout_issuer = local.sp_issuer_endpoint
+  single_logout_url = local.idp_redirect_endpoint
   single_logout_certificate = data.cyral_saml_certificate.this.certificate
 
   attribute_statements {
@@ -101,7 +103,7 @@ data "cyral_saml_configuration" "this" {
 }
 
 resource "cyral_integration_idp_okta" "this" {
-  draft_alias = local.integration_alias
+  draft_alias = local.idp_integration_alias
   samlp {
     display_name = var.idp_integration_name
     config {
