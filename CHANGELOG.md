@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.1 - (June 9, 2022)
+
+Minimum required Control Plane version: `v2.25.0`.
+
+### Bug fix:
+
+* Fixes redirect endpoint used in okta app ([#13](https://github.com/cyralinc/terraform-okta-idp/pull/13))
+
 ## 3.0.0 - (June 6, 2022)
 
 Minimum required Control Plane version: `v2.25.0`.
