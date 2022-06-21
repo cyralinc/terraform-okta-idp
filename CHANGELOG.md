@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.2 - (June 21, 2022)
+
+Minimum required Control Plane version: `v2.25.0`.
+
+### Bug fix:
+
+* Update SSO URLs to support SP and IdP Initiated SSO ([#14](https://github.com/cyralinc/terraform-okta-idp/pull/14))
+
 ## 3.0.1 - (June 9, 2022)
 
 Minimum required Control Plane version: `v2.25.0`.
