@@ -1,3 +1,6 @@
 .terraform
 .terraform.lock.hcl
 terraform.tfstate*
+
+# Folder to manually test the module
+test
