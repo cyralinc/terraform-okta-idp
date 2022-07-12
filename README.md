@@ -11,7 +11,7 @@ terraform {
   required_providers {
     okta = {
       source = "okta/okta"
-      version = "~> 3.17"
+      version = "~> 3.17, <= 3.30.0"
     }
     cyral = {
       source = "cyralinc/cyral"
@@ -67,7 +67,7 @@ output "okta_app_saml_id" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_cyral"></a> [cyral](#requirement\_cyral) | >= 2.2.0 |
-| <a name="requirement_okta"></a> [okta](#requirement\_okta) | ~> 3.17 |
+| <a name="requirement_okta"></a> [okta](#requirement\_okta) | ~> 3.17, <= 3.30.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1.0 |
 
 ## Providers
@@ -75,7 +75,7 @@ output "okta_app_saml_id" {
 | Name | Version |
 |------|---------|
 | <a name="provider_cyral"></a> [cyral](#provider\_cyral) | >= 2.2.0 |
-| <a name="provider_okta"></a> [okta](#provider\_okta) | ~> 3.17 |
+| <a name="provider_okta"></a> [okta](#provider\_okta) | ~> 3.17, <= 3.30.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.1.0 |
 
 ## Modules
