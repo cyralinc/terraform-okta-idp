@@ -2,7 +2,7 @@ terraform {
   required_providers {
     okta = {
       source = "okta/okta"
-      version = "3.30.0"
+      version = "~> 3.17, <= 3.30.0"
     }
     cyral = {
       source = "cyralinc/cyral"
