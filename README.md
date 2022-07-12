@@ -11,7 +11,7 @@ terraform {
   required_providers {
     okta = {
       source = "okta/okta"
-      version = "~> 3.17"
+      version = "3.30.0"
     }
     cyral = {
       source = "cyralinc/cyral"
@@ -67,7 +67,7 @@ output "okta_app_saml_id" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_cyral"></a> [cyral](#requirement\_cyral) | >= 2.2.0 |
-| <a name="requirement_okta"></a> [okta](#requirement\_okta) | ~> 3.17 |
+| <a name="requirement_okta"></a> [okta](#requirement\_okta) | 3.30.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1.0 |
 
 ## Providers
@@ -75,7 +75,7 @@ output "okta_app_saml_id" {
 | Name | Version |
 |------|---------|
 | <a name="provider_cyral"></a> [cyral](#provider\_cyral) | >= 2.2.0 |
-| <a name="provider_okta"></a> [okta](#provider\_okta) | ~> 3.17 |
+| <a name="provider_okta"></a> [okta](#provider\_okta) | 3.30.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.1.0 |
 
 ## Modules
@@ -87,12 +87,12 @@ No modules.
 | Name | Type |
 |------|------|
 | [cyral_integration_idp_okta.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_idp_okta) | resource |
-| [okta_app_group_assignments.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_group_assignments) | resource |
-| [okta_app_saml.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_saml) | resource |
+| [okta_app_group_assignments.this](https://registry.terraform.io/providers/okta/okta/3.30.0/docs/resources/app_group_assignments) | resource |
+| [okta_app_saml.this](https://registry.terraform.io/providers/okta/okta/3.30.0/docs/resources/app_saml) | resource |
 | [random_uuid.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
 | [cyral_saml_certificate.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/data-sources/saml_certificate) | data source |
 | [cyral_saml_configuration.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/data-sources/saml_configuration) | data source |
-| [okta_group.this](https://registry.terraform.io/providers/okta/okta/latest/docs/data-sources/group) | data source |
+| [okta_group.this](https://registry.terraform.io/providers/okta/okta/3.30.0/docs/data-sources/group) | data source |
 
 ## Inputs
 
