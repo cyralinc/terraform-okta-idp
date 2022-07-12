@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.3 - (July 12, 2022)
+
+Minimum required Control Plane version: `v2.25.0`.
+
+### Bug fix:
+
+* Pin Okta Provider version to `<= 3.30.0` ([#15](https://github.com/cyralinc/terraform-okta-idp/pull/15))
+
+
 ## 3.0.2 - (June 21, 2022)
 
 Minimum required Control Plane version: `v2.25.0`.
