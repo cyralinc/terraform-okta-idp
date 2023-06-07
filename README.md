@@ -11,11 +11,11 @@ terraform {
   required_providers {
     okta = {
       source = "okta/okta"
-      version = "~> 3.17, <= 3.30.0"
+      version = "~> 3.17"
     }
     cyral = {
       source = "cyralinc/cyral"
-      version = ">= 2.2.0"
+      version = "~> 4.3"
     }
     random = {
       source = "hashicorp/random"
@@ -43,8 +43,6 @@ module "cyral_idp_okta" {
   source = "cyralinc/idp/okta"
   version = ">= 3.0.0"
 
-  control_plane = "mytenant.cyral.com:8000"
-  
   okta_app_name = "Cyral"
   okta_groups = ["Everyone"]
   
@@ -66,17 +64,17 @@ output "okta_app_saml_id" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_cyral"></a> [cyral](#requirement\_cyral) | >= 2.2.0 |
-| <a name="requirement_okta"></a> [okta](#requirement\_okta) | ~> 3.17, <= 3.30.0 |
+| <a name="requirement_cyral"></a> [cyral](#requirement\_cyral) | >= 4.3.0 |
+| <a name="requirement_okta"></a> [okta](#requirement\_okta) | 3.46.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cyral"></a> [cyral](#provider\_cyral) | >= 2.2.0 |
-| <a name="provider_okta"></a> [okta](#provider\_okta) | ~> 3.17, <= 3.30.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | >= 3.1.0 |
+| <a name="provider_cyral"></a> [cyral](#provider\_cyral) | 4.3.0 |
+| <a name="provider_okta"></a> [okta](#provider\_okta) | 3.46.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
 
 ## Modules
 
@@ -86,28 +84,23 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [cyral_integration_idp_okta.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_idp_okta) | resource |
-| [okta_app_group_assignments.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_group_assignments) | resource |
-| [okta_app_saml.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_saml) | resource |
+| [cyral_integration_idp_saml.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_idp_saml) | resource |
+| [cyral_integration_idp_saml_draft.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_idp_saml_draft) | resource |
+| [okta_app_group_assignments.this](https://registry.terraform.io/providers/okta/okta/3.46.0/docs/resources/app_group_assignments) | resource |
+| [okta_app_saml.this](https://registry.terraform.io/providers/okta/okta/3.46.0/docs/resources/app_saml) | resource |
 | [random_uuid.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
 | [cyral_saml_certificate.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/data-sources/saml_certificate) | data source |
 | [cyral_saml_configuration.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/data-sources/saml_configuration) | data source |
-| [okta_group.this](https://registry.terraform.io/providers/okta/okta/latest/docs/data-sources/group) | data source |
+| [okta_group.this](https://registry.terraform.io/providers/okta/okta/3.46.0/docs/data-sources/group) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_allowed_clock_skew"></a> [allowed\_clock\_skew](#input\_allowed\_clock\_skew) | Clock skew in seconds that is tolerated when validating Identity Provider tokens. | `number` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
-| <a name="input_back_channel_logout"></a> [back\_channel\_logout](#input\_back\_channel\_logout) | Indicates whether or not the Okta Identity Provider supports backchannel logout. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
-| <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | Control plane host and API port (ex: some-cp.cyral.com:8000). | `string` | n/a | yes |
-| <a name="input_disable_force_authentication"></a> [disable\_force\_authentication](#input\_disable\_force\_authentication) | Indicates whether the Okta Identity Provider must authenticate the presenter directly rather than rely on a previous security context. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
 | <a name="input_idp_integration_name"></a> [idp\_integration\_name](#input\_idp\_integration\_name) | IdP integration name that will be shown in Control Plane. | `string` | n/a | yes |
 | <a name="input_okta_app_name"></a> [okta\_app\_name](#input\_okta\_app\_name) | The name of the Okta Application that will be created. | `string` | n/a | yes |
 | <a name="input_okta_groups"></a> [okta\_groups](#input\_okta\_groups) | Groups that will be assigned in the Okta Application. | `list(string)` | `[]` | no |
-| <a name="input_okta_groups_filter"></a> [okta\_groups\_filter](#input\_okta\_groups\_filter) | The type and value of the filter that will be applied to Okta groups. | <pre>object({<br>    type = string<br>    value = string<br>  })</pre> | <pre>{<br>  "type": "REGEX",<br>  "value": ".*"<br>}</pre> | no |
-| <a name="input_tenant"></a> [tenant](#input\_tenant) | Tenant associated with the Control Plane. | `string` | `"default"` | no |
-| <a name="input_wants_assertions_encrypted"></a> [wants\_assertions\_encrypted](#input\_wants\_assertions\_encrypted) | Indicates whether the Cyral Service Provider expects an encrypted assertion. | `bool` | If not set, the default value will be retrieved from the Okta Application SAML metadata. | no |
+| <a name="input_okta_groups_filter"></a> [okta\_groups\_filter](#input\_okta\_groups\_filter) | The type and value of the filter that will be applied to Okta groups. | <pre>object({<br>    type  = string<br>    value = string<br>  })</pre> | <pre>{<br>  "type": "REGEX",<br>  "value": ".*"<br>}</pre> | no |
 
 ## Outputs
 
