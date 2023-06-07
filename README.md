@@ -30,7 +30,7 @@ provider "cyral" {
   client_id = ""
   client_secret = ""
 
-  control_plane = "mytenant.cyral.com:8000"
+  control_plane = "mytenant.cyral.com"
 }
 
 provider "okta" {
@@ -41,7 +41,7 @@ provider "okta" {
 
 module "cyral_idp_okta" {
   source = "cyralinc/idp/okta"
-  version = ">= 3.0.0"
+  version = "~> 4.0"
 
   okta_app_name = "Cyral"
   okta_groups = ["Everyone"]
@@ -60,21 +60,22 @@ output "okta_app_saml_id" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_cyral"></a> [cyral](#requirement\_cyral) | >= 4.3.0 |
-| <a name="requirement_okta"></a> [okta](#requirement\_okta) | 3.46.0 |
+| <a name="requirement_cyral"></a> [cyral](#requirement\_cyral) | ~> 4.3 |
+| <a name="requirement_okta"></a> [okta](#requirement\_okta) | ~> 3.17 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cyral"></a> [cyral](#provider\_cyral) | 4.3.0 |
-| <a name="provider_okta"></a> [okta](#provider\_okta) | 3.46.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
+| <a name="provider_cyral"></a> [cyral](#provider\_cyral) | ~> 4.3 |
+| <a name="provider_okta"></a> [okta](#provider\_okta) | ~> 3.17 |
+| <a name="provider_random"></a> [random](#provider\_random) | >= 3.1.0 |
 
 ## Modules
 
@@ -86,12 +87,12 @@ No modules.
 |------|------|
 | [cyral_integration_idp_saml.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_idp_saml) | resource |
 | [cyral_integration_idp_saml_draft.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/resources/integration_idp_saml_draft) | resource |
-| [okta_app_group_assignments.this](https://registry.terraform.io/providers/okta/okta/3.46.0/docs/resources/app_group_assignments) | resource |
-| [okta_app_saml.this](https://registry.terraform.io/providers/okta/okta/3.46.0/docs/resources/app_saml) | resource |
+| [okta_app_group_assignments.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_group_assignments) | resource |
+| [okta_app_saml.this](https://registry.terraform.io/providers/okta/okta/latest/docs/resources/app_saml) | resource |
 | [random_uuid.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
 | [cyral_saml_certificate.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/data-sources/saml_certificate) | data source |
 | [cyral_saml_configuration.this](https://registry.terraform.io/providers/cyralinc/cyral/latest/docs/data-sources/saml_configuration) | data source |
-| [okta_group.this](https://registry.terraform.io/providers/okta/okta/3.46.0/docs/data-sources/group) | data source |
+| [okta_group.this](https://registry.terraform.io/providers/okta/okta/latest/docs/data-sources/group) | data source |
 
 ## Inputs
 
@@ -108,3 +109,4 @@ No modules.
 |------|-------------|
 | <a name="output_integration_idp_okta_id"></a> [integration\_idp\_okta\_id](#output\_integration\_idp\_okta\_id) | The ID (Alias) of the Okta IdP Integration resource. |
 | <a name="output_okta_app_saml_id"></a> [okta\_app\_saml\_id](#output\_okta\_app\_saml\_id) | The ID of the Okta SAML Application resource. |
+<!-- END_TF_DOCS -->

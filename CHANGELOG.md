@@ -1,10 +1,16 @@
 # Change Log
 
+## 4.0.0 - (June 7, 2023)
+
+Minimum required Control Plane version: `v4.7.0`.
+
+* feat: Update Okta module to use Generic SAML instead ([#17](https://github.com/cyralinc/terraform-okta-idp/pull/17))
+
 ## 3.0.3 - (July 12, 2022)
 
 Minimum required Control Plane version: `v2.25.0`.
 
-### Bug fix:
+### Bug fixes:
 
 * Pin Okta Provider version to `<= 3.30.0` ([#15](https://github.com/cyralinc/terraform-okta-idp/pull/15))
 
@@ -13,7 +19,7 @@ Minimum required Control Plane version: `v2.25.0`.
 
 Minimum required Control Plane version: `v2.25.0`.
 
-### Bug fix:
+### Bug fixes:
 
 * Update SSO URLs to support SP and IdP Initiated SSO ([#14](https://github.com/cyralinc/terraform-okta-idp/pull/14))
 
@@ -21,7 +27,7 @@ Minimum required Control Plane version: `v2.25.0`.
 
 Minimum required Control Plane version: `v2.25.0`.
 
-### Bug fix:
+### Bug fixes:
 
 * Fixes redirect endpoint used in okta app ([#13](https://github.com/cyralinc/terraform-okta-idp/pull/13))
 
@@ -29,7 +35,7 @@ Minimum required Control Plane version: `v2.25.0`.
 
 Minimum required Control Plane version: `v2.25.0`.
 
-### Feature:
+### Features:
 
 * Rename repository to `terraform-okta-idp` ([#12](https://github.com/cyralinc/terraform-okta-idp/pull/12))
 
@@ -37,7 +43,7 @@ Minimum required Control Plane version: `v2.25.0`.
 
 Minimum required Control Plane version: `v2.25.0`.
 
-### Bugfix:
+### Bug fixes:
 
 * Fix extra bracket around userName for subject_name_id_template ([#11](https://github.com/cyralinc/terraform-okta-idp/pull/11))
 
@@ -54,6 +60,7 @@ Minimum required Control Plane version: `v2.25.0`.
 Minimum required Control Plane version: `v2.25.0`.
 
 ### Features:
+
 * Update IDP Okta module with new sso integration resource ([#7](https://github.com/cyralinc/terraform-okta-idp/pull/7));
 
 ### Bug fixes:
@@ -63,4 +70,5 @@ Minimum required Control Plane version: `v2.25.0`.
 ## 1.0.0 (June 17, 2021)
 
 ### Features:
+
 * Module initial release: ([#1](https://github.com/cyralinc/terraform-okta-idp/pull/1));
