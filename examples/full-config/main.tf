@@ -4,7 +4,7 @@ provider "cyral" {
   client_id     = ""
   client_secret = ""
 
-  control_plane = "mytenant.cyral.com:8000"
+  control_plane = "mytenant.cyral.com"
 }
 
 provider "okta" {

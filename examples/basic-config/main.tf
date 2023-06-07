@@ -1,10 +1,10 @@
 provider "cyral" {
   # client_id and client_secret may also be declared as env vars.
   # Please see provider docs for more info.
-  client_id = ""
+  client_id     = ""
   client_secret = ""
 
-  control_plane = "mytenant.cyral.com:8000"
+  control_plane = "mytenant.cyral.com"
 }
 
 provider "okta" {
@@ -14,10 +14,10 @@ provider "okta" {
 }
 
 module "cyral_idp_okta" {
-  source = "cyralinc/idp/okta"
+  source  = "cyralinc/idp/okta"
   version = ">= 3.0.0"
-  
+
   okta_app_name = "Cyral"
-  
+
   idp_integration_name = "Okta"
 }
