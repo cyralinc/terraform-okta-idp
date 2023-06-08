@@ -59,7 +59,7 @@ resource "okta_app_saml" "this" {
   }
 
   attribute_statements {
-    name         = "groups"
+    name         = "memberOf"
     type         = "GROUP"
     filter_type  = var.okta_groups_filter.type
     filter_value = var.okta_groups_filter.value
@@ -72,9 +72,6 @@ resource "okta_app_saml" "this" {
       # This is needed because Okta stores the certificate with line breaks, which would cause
       # a plan at every apply
       single_logout_certificate,
-      # This is needed because Okta still updating `groups` field even though its 
-      # deprecated.
-      groups,
     ]
   }
 }
