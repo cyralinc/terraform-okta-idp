@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.1 - (June 9, 2023)
+
+Minimum required Control Plane version: `v4.7.0`.
+
+* Remove deprecated field and change from groups to memberOf ([#18](https://github.com/cyralinc/terraform-okta-idp/pull/18))
+
 ## 4.0.0 - (June 7, 2023)
 
 Minimum required Control Plane version: `v4.7.0`.
