@@ -38,21 +38,21 @@ resource "okta_app_saml" "this" {
   single_logout_certificate = data.cyral_saml_certificate.this.certificate
 
   attribute_statements {
-    name      = "EMAIL"
+    name      = "email"
     type      = "EXPRESSION"
     values    = ["user.email"]
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
   }
 
   attribute_statements {
-    name      = "FIRST_NAME"
+    name      = "firstName"
     type      = "EXPRESSION"
     values    = ["user.firstName"]
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
   }
 
   attribute_statements {
-    name      = "LAST_NAME"
+    name      = "lastName"
     type      = "EXPRESSION"
     values    = ["user.lastName"]
     namespace = "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
