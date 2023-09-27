@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.0.2 - (September 27, 2023)
+
+Minimum required Control Plane version: `v4.7.0`.
+
+* Fix attributes names in Okta app saml ([#19](https://github.com/cyralinc/terraform-okta-idp/pull/19))
+
+# Change Log
+
 ## 4.0.1 - (June 9, 2023)
 
 Minimum required Control Plane version: `v4.7.0`.
